@@ -4,14 +4,11 @@ const gridButton = document.createElement("button");
 gridButton.id = "grid-button";
 gridButton.textContent = "Click to create new grid";
 
-let maxsize = 1000;
-
 function makeGrid(rows,cols){
     for (i=0; i<(rows*cols); i++){
         gridContainer.style.setProperty('--grid-rows', rows);
         gridContainer.style.setProperty('--grid-cols', cols);
         let gridItem = document.createElement("div");
-        gridItem.innerText = (i+1);
         gridContainer.appendChild(gridItem).className = "grid-item";
     }
 }
@@ -35,10 +32,6 @@ function createGrid(){
     }
     makeGrid(grid,grid);
     grids = document.getElementsByClassName("grid-item");
-    for (i=0; i < grids.length; i++){
-        grids[i].style.height = Math.round(maxsize / grid) + "px";
-        grids[i].style.width = Math.round(maxsize / grid) + "px";
-    }
     for (let i = 0; i < grids.length; i++){
         grids[i].addEventListener('mouseover', () => changeColor(grids[i]));
     }
